@@ -10,17 +10,15 @@ namespace Demo
     {
         static void Main(string[] args)
         {
+            Console.OutputEncoding = Encoding.UTF8;
+
             Quadratic_Probing collision = new Quadratic_Probing();
             System.Console.WriteLine(collision.size);
             collision.Add("nguyen", "thanh tan");
             collision.Add("xin", "Chao");
-            System.Console.WriteLine(collision.size);
-            foreach (var item in collision.Keys)
-            {
-                System.Console.WriteLine(item);
-            }
-            System.Console.WriteLine(collision.GetValue("nguyen"));
-            System.Console.WriteLine(collision.GetValue("xin"));
+            collision.printHash();
+
+           
         }
     }
     public class Info
@@ -180,6 +178,21 @@ namespace Demo
             array = new Info[size];
             count = 0;
         }
-        #endregion    
+        #endregion
+
+        public void printHash()
+        {
+            Info[] temp = array;
+
+            Console.WriteLine("HashTable Hiện Tại:");
+            for (int i = 0; i < temp.Length; i++)
+            {
+                if (temp[i] != null)
+                {
+                    Console.WriteLine("key = " + temp[i].Key + ", val = " + temp[i].Value);
+                }
+            }
+            Console.WriteLine();
+        }
     }
 }
